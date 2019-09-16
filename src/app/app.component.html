@@ -1,0 +1,14 @@
+<h1>我是根组件</h1>
+
+<header>
+  <!-- 4. ng-router-link-active 实现<a link>跳转 -->
+  <!-- 5. 在css中配置.active这个selector的style -->
+  <!-- 注意在.active要加父selector,不然不工作. 例如 header .active -->
+  <a [routerLink]="[ '/home' ]" routerLinkActive="active">Home</a>
+  <a [routerLink]="[ '/news' ]" routerLinkActive="active">News</a>
+  <a [routerLink]="[ '/products' ]" routerLinkActive="active">Products</a>
+</header>
+
+
+<!-- 3. 引入routes模块 -->
+<router-outlet></router-outlet>

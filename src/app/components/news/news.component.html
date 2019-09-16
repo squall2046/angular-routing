@@ -1,0 +1,32 @@
+<p>news works!</p>
+
+<h1> Angular ng-router-link 跳转页面</h1>
+
+<br><hr>
+
+<h3>1. GET 方法(aid=xxx) 向 newscontent 组件传值, URL显示为 <u>?aid=xxx</u></h3>
+<ul>
+    <li *ngFor="let item of list; let key=index">
+        <!--way1: GET 方法向 newscontent 组件传值 ?aid=xxx -->
+        <!-- <a href="/newscontent?aid={{key}}">{{key}}--{{item}}</a> -->
+
+        <!--way2: GET 方法向 newscontent 组件传值 ?aid=xxx -->
+        <a [routerLink]="[ '/newscontent' ]" [queryParams]='{aid:key}'>{{key}}--{{item}}</a>
+
+        <!-- 然后, newscontent 组件需要获取 ?aid=xxx 值 -->
+    </li>
+</ul>
+
+<br><hr>
+
+<h3>2. 动态 route 方法(/:aid) 向 newscontent 组件传值, URL显示为 <u>/xxx</u></h3>
+<ul>
+    <!--way3: 动态 route 方法向 newscontent 组件传值 /:aid -->
+    <!-- 需要先在 app-routing.module.ts 中的 newscontent 路径里加入动态路由 /:aid-->
+    <!-- 注意, :aid 是 parameter, 可以自定义. -->
+    <!-- 然后, ng-route-link 生成 <a [routerLink]="[ '/path', routeParam ]">name</a> -->
+    <!-- 其中, routeParam 就是动态路由 :aid, 实际值会显示在url中. -->
+    <li *ngFor="let item of list; let key=index">
+            <a [routerLink]="[ '/newscontent', key ]">{{key}}--{{item}}</a>
+    </li>
+</ul>
